@@ -1,4 +1,4 @@
-![General tests](https://github.com/alyalbina/TZ_3/CI-test/actions/workflows/main.yml/badge.svg)
+![General tests](https://github.com/alyalbina/TZ_3/actions/workflows/main.yml/badge.svg)
 
 Simple program for reading values 
 from file and doing some calculations
