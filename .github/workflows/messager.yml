@@ -18,14 +18,3 @@ jobs:
             Repository: ${{ github.repository }}
             
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-
-  check_tests:
-    name: Tests_status
-    runs-on: ubuntu-latest
-    steps:
-      - name: send message with test status
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
