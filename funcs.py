@@ -1,5 +1,5 @@
 import sys
-
+from random import randint
 
 # read and return all data from file
 def read_file(filename):
@@ -43,11 +43,11 @@ def find_sum(data):
     return summ
 
 
-def find_mult(data):
+def find_mult(data, flag=0):
     multip = 1
     for i in data:
         multip *= i
-        if multip >= sys.maxsize ** 2 :
+        if multip >= sys.maxsize ** 2 and flag == 0:
             print(f"Value {multip} creates overflow")
             raise OverflowError("Result is greater than sys.maxsize ^2!")
     return round(multip, 3)
@@ -71,3 +71,13 @@ def main_func():
     except OverflowError:
         print("During multiplication overflow was caught!")
 
+
+def random_arr(amount, low_lim, up_lim):
+    arr = []
+    low_lim = int(low_lim)
+    up_lim = int(up_lim)
+
+    for i in range(amount):
+        arr.append(randint(low_lim, up_lim))
+
+    return arr

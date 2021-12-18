@@ -2,7 +2,7 @@ import pytest as pt
 from os import remove
 import time
 import funcs as fc
-from funcs import find_max, find_sum, find_mult
+from funcs import find_max, find_sum, find_mult, find_min, random_arr
 
 
 def run_pytests():
@@ -11,29 +11,36 @@ def run_pytests():
 
 
 def runtime_test():
-    data1 = [1, 2, 3, 4]
-    data2 = []
-    for i in range(25):
-        data2 += data1
-    start = time.clock()
-    res = find_max(data1)
-    end = time.clock()
-    print(f"Time of find_max for 4 objs = {end - start}")
+    smol = 5000
+    big = 100000
+    data_smol = random_arr(smol, 1, 10)
+    data_big = random_arr(big, 1, 10)
+
     start = time.time()
-    res = find_max(data2)
-    end = time.time()
-    print(f"Time of find_max for 100 objs = {end - start}")
-    start = time.time()
-    res = find_mult(data1)
-    end = time.time()
-    print(f"Time of find_mult for 4 objs = {end - start}")
-    start = time.time()
+    find_min(data_smol)
+    find_max(data_smol)
+    find_sum(data_smol)
     try:
-        res = find_mult(data2)
-    except OverflowError:
+        find_mult(data_smol, flag=1)
+    except:
         pass
-    end = time.time()
-    print(f"Time of find_mult for 100 objs = {end - start}")
+    time_smol = time.time() - start
+    print(f"Time of calculations for 5000 elems = {time_smol}")
+
+    start = time.time()
+    find_min(data_big)
+    find_max(data_big)
+    find_sum(data_big)
+    try:
+        find_mult(data_big, flag=1)
+    except:
+        pass
+    time_big = time.time() - start
+    print(f"Time of calculations for 100000 elems = {time_big}")
+
+    print(f"---------\nRatio of the number of array elements = {big / smol}")
+    print(f"Ratio of the time execution = {round(time_big / time_smol, 2)}\n---------")
+    
 
 
 def overflow_test():
@@ -73,4 +80,3 @@ def test_sum():
 def test_multiply():
     data = [1, 4, 3, 2]
     assert fc.find_mult(data) == 24
-
