@@ -18,7 +18,7 @@ python3 main.py
 - Connect GitHub Actions CI system  ✔️
 - Automate test run after every pull / pull_request ✔️
 - Create test validation badge in README.md ✔️
-- Automate Telegram messages with test results ✔️
+- Automate Telegram messages with test results ✔️✔️
 
 
 
